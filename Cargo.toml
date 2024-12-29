@@ -1,0 +1,20 @@
+[package]
+name = "zero2prod"
+version = "0.1.0"
+edition = "2021"
+
+[target.aarch64-apple-darwin]
+rustflags = ["-C", "link-arg=-fuse-ld=/opt/homebrew/opt/llvm/bin/ld64.lld"]
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+path = "src/main.rs"
+name = "zero2prod"
+
+[dependencies]
+actix-web = "4"
+reqwest = "0.12.7"
+serde = { version = "1.0.210", features = ["serde_derive"] }
+tokio = { version = "1.23.0", features = ["full"] }
